@@ -187,3 +187,11 @@
   margin: 10px 0;
 }
 
+.sub-menu p{
+  cursor: pointer;
+  font-size: 14px;
+}
+.menu:hover, .sub-menu{
+  display: block;
+  
+}
