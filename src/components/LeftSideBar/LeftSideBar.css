@@ -1,67 +1,267 @@
-/* Global and Reset Styles (if not already in your main index.css) */
+/* Global and Reset Styles */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif; /* Recommended a nice font for chat */
+  font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 
 /* Hide scrollbar for webkit browsers */
 ::-webkit-scrollbar {
-  display: none;
+  width: 6px;
 }
 
-/* Main Sidebar Container */
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border-radius: 10px;
+}
+
+/* Main Sidebar Container with Electrifying Background */
 .ls {
-  background: #001030;
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 35%, #24243e 100%);
   color: white;
-  height: 100%; 
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
-}
-/* Top Section Wrapper */
-.ls-top {
-  padding: 20px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Navigation Bar */
+/* Animated Background Effect */
+.ls::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.1) 0%, transparent 50%);
+  animation: backgroundFloat 8s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes backgroundFloat {
+  0% {
+    transform: translateX(0px) translateY(0px) rotate(0deg);
+  }
+  100% {
+    transform: translateX(10px) translateY(-10px) rotate(2deg);
+  }
+}
+
+/* Top Section Wrapper */
+.ls-top {
+  padding: 25px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Navigation Bar with Glass Effect */
 .ls-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 15px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: slideInFromTop 0.8s ease-out;
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .ls-nav .logo {
-  max-width: 110px; /* Slightly smaller logo to fit better */
-  margin-left: -5px; /* Nudge logo slightly to the left if needed for alignment */
+  max-width: 120px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transition: all 0.3s ease;
+}
+
+.ls-nav .logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
+}
+
+.ls-nav .menu {
+  position: relative;
+  padding: 12px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.ls-nav .menu:hover {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(103, 126, 234, 0.5);
 }
 
 .ls-nav .menu img {
-  max-height: 20px;
-  opacity: 0.6;
+  max-height: 24px;
+  opacity: 0.8;
   cursor: pointer;
-  transition: opacity 0.3s; /* Smooth hover effect */
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
+
 .ls-nav .menu img:hover {
   opacity: 1;
+  transform: rotate(90deg);
 }
 
+/* Electrifying Sub-menu */
+.menu .sub-menu {
+  position: absolute;
+  top: 110%;
+  right: 0;
+  width: 160px;
+  padding: 20px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+  backdrop-filter: blur(20px);
+  color: #2d3748;
+  z-index: 100;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(103, 126, 234, 0.3);
+  display: none;
+  opacity: 0;
+  transform: translateY(-10px) scale(0.95);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
 
-/* Search Bar */
+.menu .sub-menu.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.sub-menu::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+  border-radius: 15px;
+  z-index: -1;
+  animation: borderRotate 3s linear infinite;
+}
+
+@keyframes borderRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.sub-menu p {
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sub-menu p::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(103, 126, 234, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.sub-menu p:hover::before {
+  left: 100%;
+}
+
+.sub-menu p:hover {
+  color: #667eea;
+  transform: translateX(5px);
+}
+
+.sub-menu hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+  margin: 12px 0;
+}
+
+/* Futuristic Search Bar */
 .ls-search {
-  background-color: #002670;
+  background: linear-gradient(135deg, rgba(103, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 15px;
-  margin-top: 20px;
-  border-radius: 20px;
+  gap: 15px;
+  padding: 15px 20px;
+  margin-top: 25px;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.ls-search::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.ls-search:hover::before {
+  left: 100%;
+}
+
+.ls-search:focus-within {
+  border-color: rgba(103, 126, 234, 0.5);
+  box-shadow: 
+    0 0 0 3px rgba(103, 126, 234, 0.1),
+    0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
 
 .ls-search img {
-  width: 16px;
-  opacity: 0.8;
+  width: 18px;
+  opacity: 0.9;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: all 0.3s ease;
+}
+
+.ls-search:focus-within img {
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 .ls-search input {
@@ -69,129 +269,215 @@
   border: none;
   outline: none;
   color: white;
-  font-size: 14px;
+  font-size: 15px;
   width: 100%;
+  font-weight: 400;
 }
 
 .ls-search input::placeholder {
-  color: #c8c8c8;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.3s ease;
 }
 
-/* Friends/Chat List */
+.ls-search:focus-within input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Enhanced Friends/Chat List */
 .ls-list {
   flex-grow: 1;
   overflow-y: auto;
-  padding: 0 20px; /* Consistent horizontal padding */
-  max-height: 50vh;  /* MODIFICATION: Added this line to force scrolling */
+  padding: 0 20px;
+  max-height: 50vh;
+  position: relative;
+  z-index: 2;
 }
 
-/* --- MERGED AND CLEANED UP STYLES --- */
+/* Electrifying Friend Items */
 .friends {
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 12px 0;
+  gap: 18px;
+  padding: 16px 20px;
+  margin: 8px 0;
   cursor: pointer;
-  border-bottom: 1px solid #002670;
-  transition: background-color 0.3s;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
 }
 
-.friends:last-child {
-  border-bottom: none;
+.friends::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(103, 126, 234, 0.1) 50%, 
+    transparent 100%);
+  transition: left 0.6s ease;
+}
+
+.friends:hover::before {
+  left: 100%;
+}
+
+.friends::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(103, 126, 234, 0.1) 0%, 
+    rgba(118, 75, 162, 0.1) 50%,
+    rgba(245, 87, 108, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 20px;
 }
 
 .friends:hover {
-  background-color: #077eff;
-  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(10px) translateY(-2px);
+  border-color: rgba(103, 126, 234, 0.3);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(103, 126, 234, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
+.friends:hover::after {
+  opacity: 1;
+}
+
+.friends:active {
+  transform: translateX(8px) translateY(0px) scale(0.98);
+}
+
+/* Electrifying Profile Images */
 .friends img {
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   object-fit: cover;
+  position: relative;
+  border: 3px solid transparent;
+  background: linear-gradient(45deg, #667eea, #764ba2, #f093fb) padding-box,
+              linear-gradient(45deg, #667eea, #764ba2, #f093fb) border-box;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* This targets the div containing the name and message */
+.friends:hover img {
+  border-color: transparent;
+  box-shadow: 
+    0 0 0 3px rgba(103, 126, 234, 0.6),
+    0 0 20px rgba(103, 126, 234, 0.4),
+    0 12px 30px rgba(0, 0, 0, 0.4);
+  transform: scale(1.1);
+  animation: profilePulse 2s ease-in-out infinite;
+}
+
+@keyframes profilePulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 3px rgba(103, 126, 234, 0.6),
+      0 0 20px rgba(103, 126, 234, 0.4),
+      0 12px 30px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 6px rgba(103, 126, 234, 0.4),
+      0 0 35px rgba(103, 126, 234, 0.6),
+      0 15px 35px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Enhanced Text Styling */
 .friends div {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .friends p {
-  font-weight: 500;
+  font-weight: 600;
   margin: 0;
-  font-size: 15px;
+  font-size: 16px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.3s ease;
+}
+
+.friends:hover p {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transform: translateY(-2px);
 }
 
 .friends span {
-  font-size: 11px;
-  color: #9f9f9f;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  margin-top: 4px;
+  transition: all 0.3s ease;
 }
 
-/* Change the message color on hover too */
 .friends:hover span {
-  color: white;
+  color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
 }
-.ls-nav .menu{
-  position: relative;
-  padding: 10px 0px;
+
+/* Entrance Animations */
+.friends {
+  animation: slideInUp 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
 }
-.menu .sub-menu{
-  position: absolute;
-  top: 100%;
-  right: 0;
-  width: 130px;
-  padding: 20px;
-  border-radius: 5px;
-  background-color: white;
-  color: black;
+
+.friends:nth-child(1) { animation-delay: 0.1s; }
+.friends:nth-child(2) { animation-delay: 0.2s; }
+.friends:nth-child(3) { animation-delay: 0.3s; }
+.friends:nth-child(4) { animation-delay: 0.4s; }
+.friends:nth-child(5) { animation-delay: 0.5s; }
+.friends:nth-child(6) { animation-delay: 0.6s; }
+.friends:nth-child(7) { animation-delay: 0.7s; }
+.friends:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ls-nav {
+    padding: 12px 15px;
+  }
   
-
-}
-
-/* ... (all previous styles are correct) ... */
-
-.ls-nav .menu {
-  position: relative;
-  padding: 10px 0px;
-}
-
-.menu .sub-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  width: 130px;
-  padding: 15px; /* Adjusted padding */
-  border-radius: 5px;
-  background-color: white;
-  color: black;
-  z-index: 10; /* Ensures it appears on top */
-  border: 1px solid #e0e0e0;
-  display: none; /* Hide by default */
-}
-
-/* This class will be added by React to show the menu */
-.menu .sub-menu.active {
-  display: block;
-}
-
-.sub-menu p {
-  font-size: 14px;
-  cursor: pointer;
-}
-.sub-menu hr {
-  border: none;
-  height: 1px;
-  background-color: #e0e0e0;
-  margin: 10px 0;
-}
-
-.sub-menu p{
-  cursor: pointer;
-  font-size: 14px;
-}
-.menu:hover, .sub-menu{
-  display: block;
+  .friends {
+    padding: 12px 15px;
+    gap: 15px;
+  }
   
+  .friends img {
+    width: 45px;
+    height: 45px;
+  }
 }
