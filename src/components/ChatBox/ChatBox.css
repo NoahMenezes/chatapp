@@ -1,19 +1,19 @@
 /* Import Modern Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* Main Chat Container with Stunning Background */
+/* Main Chat Container with new "Hacker" Background */
 .chat-box {
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
-  background: linear-gradient(135deg, #002fff 0%, #8000ff 100%);
-
+  /* Dark, tech-inspired background */
+  background-color: #0d0c22;
   overflow: hidden;
   font-family: 'Inter', sans-serif;
 }
 
-/* Animated Background Pattern */
+/* Animated Grid Background Pattern */
 .chat-box::before {
   content: '';
   position: absolute;
@@ -21,37 +21,36 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
-    radial-gradient(circle at 25% 25%, rgba(103, 126, 234, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(118, 75, 162, 0.03) 0%, transparent 50%);
-  background-size: 100px 100px, 120px 120px;
-  animation: backgroundFlow 15s linear infinite;
+  /* Green grid lines for a "hacker" feel */
+  background-image: 
+    linear-gradient(rgba(0, 245, 195, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 245, 195, 0.07) 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: backgroundFlow 20s linear infinite;
   pointer-events: none;
   z-index: 1;
 }
 
 @keyframes backgroundFlow {
   0% {
-    transform: translateX(0) translateY(0);
+    background-position: 0 0;
   }
   100% {
-    transform: translateX(-20px) translateY(-20px);
+    background-position: 30px 30px;
   }
 }
 
-/* Enhanced Chat Header */
+/* Enhanced Chat Header with Glassmorphism */
 .chat-user {
   padding: 20px 25px;
   display: flex;
   align-items: center;
   gap: 15px;
-  background: linear-gradient(135deg, #002fff 0%, #8000ff 100%);
-
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(103, 126, 234, 0.2);
-  box-shadow: 
-    0 4px 20px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  /* Semi-transparent dark background for a "glass" effect */
+  background: rgba(26, 26, 58, 0.5);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 245, 195, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
   position: relative;
   z-index: 10;
   animation: slideInFromTop 0.6s ease-out;
@@ -68,18 +67,19 @@
   }
 }
 
-/* Electrifying Profile Image in Header */
+/* Profile Image with Instagram Gradient Border */
 .chat-user img:first-child {
   width: 45px;
   height: 45px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid transparent;
-  background: linear-gradient(45deg, #002fff, #8000ff) padding-box,
-              linear-gradient(45deg, #002fff, #8000ff) border-box;
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+  /* The Instagram gradient! */
+  background: linear-gradient(#0d0c22, #0d0c22) padding-box,
+              linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) border-box;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
-  animation: profileRotate 4s linear infinite;
+  animation: profileRotate 8s linear infinite; /* Slowed down for a cooler effect */
 }
 
 @keyframes profileRotate {
@@ -89,21 +89,18 @@
 
 .chat-user img:first-child:hover {
   transform: scale(1.1);
-  box-shadow: 
-    0 0 0 3px rgba(102, 126, 234, 0.4),
-    0 10px 30px rgba(102, 126, 234, 0.4);
-  animation-duration: 1s;
+  box-shadow: 0 0 25px rgba(220, 39, 67, 0.5); /* Glow from the gradient */
+  animation-duration: 2s;
 }
 
-/* Enhanced User Name Display */
+/* Enhanced User Name with Green Neon Glow */
 .chat-user p {
   flex: 1;
   font-weight: 600;
   font-size: 18px;
-  background: linear-gradient(135deg, #002fff 0%, #8000ff 100%);
-
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #e0e0e0;
+  /* Hacker green neon glow */
+  text-shadow: 0 0 8px rgba(0, 245, 195, 0.7);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -115,6 +112,8 @@
   width: 12px;
   height: 12px;
   border-radius: 50%;
+  border: 1px solid #fff;
+  background-color: #00f5c3; /* Bright green indicator */
   animation: onlinePulse 2s ease-in-out infinite;
 }
 
@@ -122,10 +121,12 @@
   0%, 100% {
     opacity: 1;
     transform: scale(1);
+    box-shadow: 0 0 5px #00f5c3;
   }
   50% {
     opacity: 0.7;
     transform: scale(1.2);
+    box-shadow: 0 0 10px #00f5c3;
   }
 }
 
@@ -135,13 +136,13 @@
   transition: all 0.3s ease;
   padding: 8px;
   border-radius: 50%;
-  background: rgba(103, 126, 234, 0.1);
+  background: rgba(0, 245, 195, 0.1);
 }
 
 .chat-user .help:hover {
-  background: rgb(0, 47, 255);
+  background: #00f5c3;
   transform: rotate(15deg) scale(1.1);
-  box-shadow: 0 5px 15px rgba(103, 126, 234, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 245, 195, 0.3);
 }
 
 /* Enhanced Message Area */
@@ -156,23 +157,22 @@
   z-index: 2;
 }
 
-/* Smooth Scrollbar */
+/* Green Scrollbar */
 .chat-msg::-webkit-scrollbar {
   width: 6px;
 }
 
 .chat-msg::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
 
 .chat-msg::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #002fff 0%, #8000ff 100%);
-
+  background: #00f5c3;
   border-radius: 10px;
 }
 
-/* Base Message Styles with Amazing Effects */
+/* Base Message Styles */
 .s-msg, .r-msg {
   display: flex;
   align-items: flex-end;
@@ -183,201 +183,87 @@
 }
 
 @keyframes messageSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Sent Message Styling */
 .s-msg {
   align-self: flex-end;
   flex-direction: row-reverse;
-  animation: messageSlideInRight 0.5s ease-out;
-}
-
-@keyframes messageSlideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 
 /* Received Message Styling */
 .r-msg {
   align-self: flex-start;
-  animation: messageSlideInLeft 0.5s ease-out;
 }
 
-@keyframes messageSlideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Electrifying Message Bubbles */
+/* Message Bubbles */
 .s-msg .msg, .r-msg .msg {
   padding: 16px 22px;
   border-radius: 25px;
   font-size: 15px;
   line-height: 1.5;
-  position: relative;
-  max-width: 400px;
   word-wrap: break-word;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* Sent Message Bubble */
+/* Sent Message Bubble with Green Accent */
 .s-msg .msg {
-  background: linear-gradient(
-    135deg,
-     #002fff 0%, 
-    transparent 50%,
-    #8000ff 100%
-  );
-
-  color: #ffffff;
-  border-radius: 25px 25px 8px 25px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.s-msg .msg::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    #002fff 0%
-    transparent 50%,
-      #8000ff 100%,
-  );
-
-  border-radius: 25px 25px 8px 25px;
-  pointer-events: none;
+  background: #1a1a3a; /* Dark card background */
+  color: #e0e0e0;
+  border-radius: 25px 8px 25px 25px;
+  border-left: 3px solid #00f5c3;
 }
 
 /* Received Message Bubble */
 .r-msg .msg {
-  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  background: #2c2c54; /* Slightly different dark bg */
   color: #f1f5f9;
-  border-radius: 25px 25px 25px 8px;
-   border: 1px solid rgba(42, 82, 152, 0.3);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  border-radius: 8px 25px 25px 25px;
 }
 
 /* Hover Effects for Messages */
 .s-msg:hover .msg, .r-msg:hover .msg {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-  color: #415a77;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
 }
 
 .s-msg:hover .msg {
-  background: linear-gradient(135deg, #002fff 0%, #8000ff 100%);
-
-  box-shadow: 
-    0 15px 40px rgba(102, 126, 234, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 40px rgba(0, 245, 195, 0.15);
 }
 
 /* Profile Images in Messages */
-.s-msg > div, .r-msg > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .s-msg > div img, .r-msg > div img {
   width: 35px;
   height: 35px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid transparent;
-  background: linear-gradient(45deg, #0d1b2a, #1b263b) padding-box,
-            linear-gradient(45deg, #0d1b2a, #1b263b) border-box;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  border: 2px solid #1a1a3a;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
 
 .s-msg:hover > div img, .r-msg:hover > div img {
   transform: scale(1.1);
-  box-shadow: 
-    0 0 0 2px rgba(102, 126, 234, 0.4),
-    0 8px 20px rgba(0, 0, 0, 0.2);
+  border-color: #00f5c3;
 }
 
-/* Time Stamps with Glow Effect */
+/* Time Stamps */
 .s-msg .time, .r-msg .time {
   font-size: 11px;
   color: #a0aec0;
   margin-top: 4px;
-  font-weight: 500;
   transition: all 0.3s ease;
 }
 
 .s-msg:hover .time, .r-msg:hover .time {
-  color: #667eea;
-  text-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+  color: #00f5c3;
+  text-shadow: 0 0 10px rgba(0, 245, 195, 0.5);
 }
 
-/* Electrifying Image Messages */
-.s-msg .msg-img {
-  max-width: 250px;
-  width: 100%;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 3px solid transparent;
-  background: linear-gradient(45deg, #0f2027, #203a43, #2c5364) padding-box,
-            linear-gradient(45deg, #0f2027, #203a43, #2c5364) border-box;
-
-  position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.s-msg .msg-img:hover {
-  transform: scale(1.05) rotate(1deg);
-  border-color: transparent;
-  box-shadow: 
-    0 0 0 3px rgba(102, 126, 234, 0.6),
-    0 0 30px rgba(102, 126, 234, 0.4),
-    0 20px 40px rgba(0, 0, 0, 0.3);
-  filter: brightness(1.1) contrast(1.1);
-}
-
-/* Lightning Effect for Images */
-.s-msg .msg-img::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  border-radius: 20px;
-  transition: left 0.6s ease;
-}
-
-.s-msg .msg-img:hover::before {
-  left: 100%;
-}
+/* ... (image message styles can be kept as is or adjusted similarly) ... */
 
 /* Enhanced Input Area */
 .chat-input {
@@ -385,15 +271,9 @@
   align-items: center;
   gap: 15px;
   padding: 20px 25px;
-  background: linear-gradient(135deg, #002fff 0%, #8000ff 100%);
-
-
-  backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(103, 126, 234, 0.1);
-  box-shadow: 
-    0 -4px 20px rgba(0, 0, 0, 0.05),
-    inset 0 1px 0 rgba(65, 90, 119, 0.8);
-
+  background: rgba(13, 12, 34, 0.5);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(0, 245, 195, 0.2);
   position: relative;
   z-index: 10;
 }
@@ -401,137 +281,144 @@
 /* Futuristic Text Input */
 .chat-input input[type="text"] {
   flex: 1;
-  border: 2px solid transparent;
+  border: 2px solid #333;
   outline: none;
-   background: linear-gradient(135deg, #002fff 0%, #8000ff 100%);
+  background: transparent;
   padding: 15px 20px;
   border-radius: 25px;
   font-size: 15px;
-  font-weight: 400;
+  color: #e0e0e0;
   transition: all 0.3s ease;
-  box-shadow: 
-    inset 0 2px 5px rgba(0, 0, 0, 0.05),
-    0 0 0 1px rgba(103, 126, 234, 0.1);
 }
 
 .chat-input input[type="text"]:focus {
-  border-color: rgba(103, 126, 234, 0.4);
-   background: linear-gradient(135deg, #002fff 0%, #8000ff 100%);
-
-  box-shadow: 
-    inset 0 2px 5px rgba(0, 0, 0, 0.05),
-    0 0 0 3px rgba(103, 126, 234, 0.1),
-    0 10px 25px rgba(103, 126, 234, 0.15);
-  transform: translateY(-2px);
+  /* Instagram gradient on focus! */
+  border-color: transparent;
+  background-image: linear-gradient(#0d0c22, #0d0c22), 
+                    linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  /* Green glow effect */
+  box-shadow: 0 0 25px rgba(0, 245, 195, 0.4);
 }
 
 .chat-input input[type="text"]::placeholder {
   color: #a0aec0;
-  font-weight: 400;
 }
 
-/* Electrifying Action Buttons */
+/* Action Buttons */
 .chat-input img, .chat-input label {
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 12px;
   border-radius: 50%;
-  background: rgba(103, 126, 234, 0.1);
+  background: rgba(0, 245, 195, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.chat-input img {
-  width: 24px;
-  height: 24px;
-  opacity: 0.8;
-}
-
-.chat-input label img {
-  width: 20px;
-  height: 20px;
-  padding: 0;
-}
-
 .chat-input img:hover, .chat-input label:hover {
-  background: rgba(103, 126, 234, 0.2);
+  background: rgba(0, 245, 195, 0.2);
   transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 8px 20px rgba(103, 126, 234, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 245, 195, 0.2);
 }
 
-.chat-input img:hover {
-  opacity: 1;
-}
-
-/* Send Button with Special Effects */
+/* Send Button with Hacker Green */
 .chat-input img:last-child {
-   background: linear-gradient(135deg, #002fff 0%, #8000ff 100%);
-  border-radius: 50%;
-  padding: 12px;
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+   background: #00f5c3;
+   border-radius: 50%;
+   padding: 12px;
+   box-shadow: 0 6px 20px rgba(0, 245, 195, 0.4);
 }
 
 .chat-input img:last-child:hover {
-  background: linear-gradient(135deg, #002fff 0%, #8000ff 100%);
-
+  background: #00f5c3;
   transform: scale(1.15);
-  box-shadow: 
-    0 10px 30px rgba(102, 126, 234, 0.6),
-    0 0 0 3px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 245, 195, 0.6);
   animation: sendPulse 0.6s ease-in-out;
 }
 
 @keyframes sendPulse {
   0%, 100% {
-    box-shadow: 
-      0 10px 30px rgba(13, 27, 42, 0.6),
-      0 0 0 3px rgba(65, 90, 119, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 245, 195, 0.4);
   }
   50% {
-    box-shadow: 
-      0 15px 40px rgba(13, 27, 42, 0.8),
-      0 0 0 6px rgba(65, 90, 119, 0.5);
+    box-shadow: 0 15px 40px rgba(0, 245, 195, 0.6);
   }
 }
-
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .chat-user {
-    padding: 15px 20px;
-    gap: 12px;
-  }
-  
-  .chat-user img:first-child {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .chat-msg {
-    padding: 20px 15px;
-    gap: 15px;
-  }
-  
-  .s-msg, .r-msg {
-    max-width: 85%;
-    gap: 12px;
-  }
-  
-  .s-msg .msg, .r-msg .msg {
-    padding: 14px 18px;
-    font-size: 14px;
-    max-width: 300px;
-    color: #1b263b; /* Initial color */
-  }
-  
-  .chat-input {
-    padding: 15px 20px;
-    gap: 12px;
-  }
-  
-  .chat-input input[type="text"] {
-    padding: 12px 18px;
-    font-size: 14px;
-  }
+  /* ... (responsive styles can remain as is) ... */
 }
+/* Enhanced Chat Header with Glassmorphism */
+.chat-user {
+  /* Increased padding for a larger header area */
+  padding: 25px 30px; 
+  display: flex;
+  align-items: center;
+  /* Increased gap for more space */
+  gap: 20px; 
+  background: rgba(26, 26, 58, 0.5);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 245, 195, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  position: relative;
+  z-index: 10;
+  animation: slideInFromTop 0.6s ease-out;
+}
+
+/* ... (keep slideInFromTop keyframes as is) ... */
+
+/* Profile Image with Instagram Gradient Border */
+.chat-user img:first-child {
+  /* Increased size for more visibility */
+  width: 55px;
+  height: 55px; 
+  border-radius: 50%;
+  object-fit: cover;
+  /* Made the border thicker */
+  border: 4px solid transparent; 
+  background: linear-gradient(#0d0c22, #0d0c22) padding-box,
+              linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) border-box;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  animation: profileRotate 8s linear infinite;
+}
+
+/* ... (keep profileRotate keyframes as is) ... */
+
+.chat-user img:first-child:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(220, 39, 67, 0.5);
+  animation-duration: 2s;
+}
+
+/* Enhanced User Name with Green Neon Glow */
+.chat-user p {
+  flex: 1;
+  font-weight: 600;
+  /* Larger font size */
+  font-size: 20px; 
+  color: #e0e0e0;
+  text-shadow: 0 0 8px rgba(0, 245, 195, 0.7);
+  display: flex;
+  align-items: center;
+  /* Increased gap between name and online dot */
+  gap: 10px; 
+  margin: 0;
+}
+
+/* Animated Online Indicator */
+.chat-user p img {
+  /* Slightly larger online indicator */
+  width: 14px;
+  height: 14px; 
+  border-radius: 50%;
+  border: 1px solid #fff;
+  background-color: #00f5c3;
+  animation: onlinePulse 2s ease-in-out infinite;
+}
+
+/* ... (keep onlinePulse keyframes as is) ... */
