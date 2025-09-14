@@ -1,29 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react';
 import './ProfileUpdate.css';
 import assets from '../../assets/assets';
 
 const ProfileUpdate = () => {
+
+  const [image, setImage]=useState(false);
+
   return (
-    <div>
-      <div className="profile">
-        <div className="profile-container">
-          <form action="">
-            <h3>Profile Details</h3>
-            <label htmlFor="avatar">
-              <input type="file" id='avatar' accept='.png, .jpg, .jpeg' hidden/>
-              <img src={assets.avatar_icon} alt="" />
-              upload profile image
-            </label>
-            <input type="text" placeholder='Your name' required />
-            <textarea placeholder='Write profile bio' required></textarea>
-            <button type='submit'>Save</button>
-          </form>
-          <img className='profile-pic' src={assets.logo_icon} alt="" />
-          
+    // The main container now serves as the root element
+    <div className="profile">
+      <div className="profile-container">
+        {/* Moved the image to the left side for a more balanced layout */}
+        <div className="profile-image-section">
+          <img className='profile-pic' src={image? URL.createObjectURL(image) :assets.logo_icon} alt="User Avatar" />
         </div>
+        
+        <form action="">
+          <h3>Profile Details</h3>
+          <label htmlFor="avatar">
+            <img src={image? URL.createObjectURL(image) :assets.avatar_icon} alt="Upload" />
+            Upload profile image
+            {/* The actual file input is hidden for styling purposes */}
+            <input onClick={(e)=>setImage(e.target.files)} type="file" id='avatar' accept='.png, .jpg, .jpeg' hidden />
+          </label>
+          <input type="text" placeholder='Your name' required />
+          <textarea placeholder='Write profile bio...' rows="4" required></textarea>
+          <button type='submit'>Save Changes</button>
+        </form>
       </div>
     </div>
-  )
+  );
 }
 
-export default ProfileUpdate
+export default ProfileUpdate;
