@@ -1,54 +1,81 @@
-.rs{
-  color: white;
-  background: #001030;
+.rs {
+  color: #333; /* Changed for better readability on white */
+  background: #ffffff;
   position: relative;
-  height: 75vh;
-  overflow-y: scroll;
+  /* MODIFICATION: Let the parent grid control the height */
+  height: 100%; 
+  overflow-y: auto; /* Changed to auto for better scrolling */
+  border-left: 1px solid #e0e0e0;
 }
-.rs-profile{
-  padding-top :60px;
+
+.rs-profile {
+  padding-top: 40px; /* Adjusted padding */
   text-align: center;
-  max-width: 70%;
+  max-width: 80%; /* Adjusted width */
   margin: auto;
 }
-.rs-profile img{
+
+.rs-profile img {
   width: 110px;
   aspect-ratio: 1/1;
   border-radius: 50%;
+  object-fit: cover;
 }
-.rs-profile h3{
+
+.rs-profile h3 {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 500; /* Increased weight */
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  margin: 5px 0px;
+  margin: 10px 0px;
 }
-.rs-profile p{
-  font-size: 18px;
-  opacity: 80%;
+
+.rs-profile h3 .dot {
+  width: 10px; /* Sized the green dot */
+}
+
+.rs-profile p {
+  font-size: 14px; /* Adjusted size */
+  opacity: 0.8;
   font-weight: 300;
+  line-height: 1.4;
+}
 
+.rs hr {
+  border: none;
+  height: 1px;
+  background-color: #e0e0e0; /* Changed color */
+  margin: 20px;
 }
-.rs hr{
-  border-color: #ffff50;
-  margin: 15px 0px;
-}
-.rs-media{
+
+.rs-media {
   padding: 0px 20px;
-  font-size: 13px;
-}
-.rs-media div{
-  max-width: 180px;
-  overflow-y: scroll;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 5px;
-  margin-top: 8px ;
 }
 
-.rs-button{
+.rs-media p {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.rs-media div {
+  /* MODIFICATION: Improved grid to be responsive */
+  width: 100%; 
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.rs-media div img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.rs-button {
   position: absolute;
   bottom: 20px;
   left: 50%;
@@ -56,9 +83,13 @@
   background: #077eff;
   color: white;
   border: none;
-  font-size: 12px;
-  font-weight: 300;
-  padding: 10px 65px;
+  font-size: 14px; /* Increased size */
+  font-weight: 400;
+  padding: 10px 40px; /* Adjusted padding */
   border-radius: 20px;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+.rs-button:hover {
+  background: #0056b3;
 }

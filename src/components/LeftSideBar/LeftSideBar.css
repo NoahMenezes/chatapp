@@ -149,3 +149,41 @@
   
 
 }
+
+/* ... (all previous styles are correct) ... */
+
+.ls-nav .menu {
+  position: relative;
+  padding: 10px 0px;
+}
+
+.menu .sub-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 130px;
+  padding: 15px; /* Adjusted padding */
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  z-index: 10; /* Ensures it appears on top */
+  border: 1px solid #e0e0e0;
+  display: none; /* Hide by default */
+}
+
+/* This class will be added by React to show the menu */
+.menu .sub-menu.active {
+  display: block;
+}
+
+.sub-menu p {
+  font-size: 14px;
+  cursor: pointer;
+}
+.sub-menu hr {
+  border: none;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 10px 0;
+}
+
