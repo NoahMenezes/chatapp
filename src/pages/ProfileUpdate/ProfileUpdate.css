@@ -1,0 +1,29 @@
+.profile{
+    min-width: 100vh;
+    background: url('./background.png') no-repeat;
+    background-size: cover;
+    display:flex;
+    align-items: center;
+    justify-content: cente ;
+}
+.profile-container{
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 700px;
+    border-radius: 10px;
+}
+.profile-pic{
+    max-width: 160px;
+    aspect-ratio: 1/1;
+    margin: 20px auto;
+    border-radius: 50%;
+}
+.profile form{
+    display: flex;   
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+    
+}
