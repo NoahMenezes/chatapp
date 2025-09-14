@@ -1,0 +1,135 @@
+/* Global and Reset Styles (if not already in your main index.css) */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif; /* Recommended a nice font for chat */
+}
+
+/* Hide scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Main Sidebar Container */
+.ls {
+  background: #001030;
+  color: white;
+  height: 100%; 
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+/* Top Section Wrapper */
+.ls-top {
+  padding: 20px;
+}
+
+/* Navigation Bar */
+.ls-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ls-nav .logo {
+  max-width: 110px; /* Slightly smaller logo to fit better */
+  margin-left: -5px; /* Nudge logo slightly to the left if needed for alignment */
+}
+
+.ls-nav .menu img {
+  max-height: 20px;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 0.3s; /* Smooth hover effect */
+}
+.ls-nav .menu img:hover {
+  opacity: 1;
+}
+
+
+/* Search Bar */
+.ls-search {
+  background-color: #002670;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  margin-top: 20px;
+  border-radius: 20px;
+}
+
+.ls-search img {
+  width: 16px;
+  opacity: 0.8;
+}
+
+.ls-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 14px;
+  width: 100%;
+}
+
+.ls-search input::placeholder {
+  color: #c8c8c8;
+}
+
+/* Friends/Chat List */
+.ls-list {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 0 20px; /* Consistent horizontal padding */
+  max-height: 50vh;  /* MODIFICATION: Added this line to force scrolling */
+}
+
+/* --- MERGED AND CLEANED UP STYLES --- */
+.friends {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 0;
+  cursor: pointer;
+  border-bottom: 1px solid #002670;
+  transition: background-color 0.3s;
+}
+
+.friends:last-child {
+  border-bottom: none;
+}
+
+.friends:hover {
+  background-color: #077eff;
+  border-radius: 5px;
+}
+
+.friends img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* This targets the div containing the name and message */
+.friends div {
+  display: flex;
+  flex-direction: column;
+}
+
+.friends p {
+  font-weight: 500;
+  margin: 0;
+  font-size: 15px;
+}
+
+.friends span {
+  font-size: 11px;
+  color: #9f9f9f;
+}
+
+/* Change the message color on hover too */
+.friends:hover span {
+  color: white;
+}

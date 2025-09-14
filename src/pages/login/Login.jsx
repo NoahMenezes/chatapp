@@ -1,35 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import assets from "../../assets/assets";
 // Before: const login = () => ...
 // After: Capitalize the component name
 const Login = () => {
+
+    const [currState, setCurrState]=useState("Sign up");
+
   return (
     <div className="login">
       <img src={assets.logo_big} alt="" className="logo" />
       <form action="" className="login-form">
-        <h2>Sign up</h2>
-        <input
+        <h2>{currState}</h2>
+        {currState==="Sign up"?<input
           type="text"
           placeholder="username"
           className="form-input"
           required
-        />
+        />:null}
         <input
           type="email"
           placeholder="Email address"
           className="form-input"
         />
         <input type="password" placeholder="password" className="form-input" />
-        <button type="submit">Sign up</button>
+        <button type="submit">{currState==="Sign up"?"Create an account":"Login now"}</button>
         <div className="login-term">
           <input type="checkbox" />
           <p>Agree to the terms of use & privacy policy</p>
         </div>
         <div className="login-forgot">
-          <p className="login-toggle">
-            Already have an account <span>click here </span>
-          </p>
+            {
+                currState==="Sign up"
+          ?<p className="login-toggle">Already have an account <span onClick={() => setCurrState("Login")}>Login here </span></p>
+          :<p className="login-toggle">Create an account <span onClick={() => setCurrState("Sign up")}>click here </span></p>
+        }
+          
         </div>
       </form>
     </div>
