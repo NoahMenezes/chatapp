@@ -1,11 +1,30 @@
 import React from 'react';
 import './RightSideBar.css';
+import assets from '../../assets/assets';
 
 const RightSideBar = () => {
   return (
-    // CHANGE: Add the wrapper div with the correct class
-    <div className='right-sidebar-wrapper'>
-      <h3>User Details</h3>
+    <div className="rs">
+      <div className="rs-profile">
+
+        <img src={assets.profile_img} alt="" />
+        <h3>Richard Stanford <img src={assets.green_dot} className='dot' alt="" /></h3>
+        <p>Hey there I am Richard Stanford using chat app</p>
+      </div>
+      <hr />
+      <div className="rs-media">
+        <p>Media</p>
+        <div>
+          <img src={assets.pic1} alt="" />
+          <img src={assets.pic2} alt="" />
+          <img src={assets.pic3} alt="" />
+          <img src={assets.pic4} alt="" />
+          <img src={assets.pic1} alt="" />
+          <img src={assets.pic2} alt="" />
+          
+        </div>
+      </div>
+      <button>Logout</button>
     </div>
   );
 }
